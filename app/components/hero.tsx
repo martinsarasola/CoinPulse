@@ -14,6 +14,7 @@ import { cn } from "@/lib/utils";
 import { BorderBeam } from "@/components/ui/border-beam";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import Image from "next/image";
 
 export interface Tab {
   title: string;
@@ -128,9 +129,11 @@ const Hero195 = ({
                         }
                       )}
                     >
-                      <img
+                      <Image
                         src={tab.image}
                         alt={tab.title}
+                        width={36}
+                        height={36}
                         className="border-border aspect-[16/10] w-full border object-top shadow-[0_6px_20px_rgb(0,0,0,0.12)]"
                       />
                       <BorderBeam duration={8} size={100} />

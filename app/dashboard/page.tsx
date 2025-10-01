@@ -1,6 +1,5 @@
 import React from "react";
 import TableComponent from "@/app/dashboard/components/table";
-import { Chart } from "@/app/dashboard/components/line-chart";
 
 const page = () => {
   return (

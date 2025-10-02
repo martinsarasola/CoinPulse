@@ -72,7 +72,7 @@ export function ShaderAnimation() {
     scene.add(mesh);
 
     const renderer = new THREE.WebGLRenderer({ antialias: false });
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 0.5));
 
     container.appendChild(renderer.domElement);
 

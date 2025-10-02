@@ -30,7 +30,7 @@ export function ShaderAnimation() {
       #define TWO_PI 6.2831853072
       #define PI 3.14159265359
 
-      precision highp float;
+      precision mediump float;
       uniform vec2 resolution;
       uniform float time;
 
@@ -41,7 +41,7 @@ export function ShaderAnimation() {
 
         vec3 color = vec3(0.0);
         for(int j = 0; j < 3; j++){
-          for(int i=0; i < 5; i++){
+          for(int i=0; i < 4; i++){
             color[j] += lineWidth*float(i*i) / abs(fract(t - 0.01*float(j)+float(i)*0.01)*5.0 - length(uv) + mod(uv.x+uv.y, 0.2));
           }
         }
@@ -72,8 +72,7 @@ export function ShaderAnimation() {
     scene.add(mesh);
 
     const renderer = new THREE.WebGLRenderer({ antialias: false });
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 0.5));
-
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1));
     container.appendChild(renderer.domElement);
 
     // Handle window resize

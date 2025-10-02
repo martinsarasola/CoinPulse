@@ -94,12 +94,12 @@ export function Nav1({
         <Sheet>
           <SheetTrigger asChild className="md:hidden">
             <Button variant="ghost" size="icon">
-              <Menu className="size-5" />
+              <Menu className="size-4" />
               <span className="sr-only">Toggle menu</span>
             </Button>
           </SheetTrigger>
           <SheetContent side="right">
-            <div className="mt-8 flex flex-col gap-4">
+            <div className="mt-8 flex flex-col gap-4 p-4">
               {currentNavigation.map((item) => (
                 <Link
                   key={item.name}

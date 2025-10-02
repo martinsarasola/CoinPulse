@@ -19,8 +19,6 @@ import { Button } from "@/components/ui/button";
 
 import { Input } from "@/components/ui/input";
 
-import {} from "@/components/ui/popover";
-
 import {
   Table,
   TableBody,
@@ -156,7 +154,7 @@ export default function TableComponent() {
       </div>
 
       {/* Tabla */}
-      <div className="rounded-md border">
+      <div className="overflow-x-auto rounded-md border">
         <Table>
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (

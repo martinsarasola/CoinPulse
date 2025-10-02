@@ -110,6 +110,7 @@ export function Nav1({
                 </Link>
               ))}
               <hr className="my-4" />
+              <AnimatedThemeToggler></AnimatedThemeToggler>
               <Button variant="ghost" asChild className="justify-start">
                 <Link href={currentLoginHref}>{currentLoginText}</Link>
               </Button>

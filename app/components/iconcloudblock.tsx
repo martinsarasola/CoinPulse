@@ -5,9 +5,7 @@ import type { Criptomoneda } from "@/app/types/crypto";
 export const IconCloudBlock = () => {
   const { data, isLoading } = useCryptoData();
 
-  const imagenes = data.map((coin: Criptomoneda) => {
-    return coin.imagen;
-  });
+  const imagenes = data?.map((coin: Criptomoneda) => coin.imagen) ?? [];
 
   if (isLoading) return null;
 

@@ -14,7 +14,7 @@ export default function MainPage() {
   console.log(isMobile);
 
   return (
-    <div className="relative flex h-full w-full flex-col items-center justify-center overflow-hidden border">
+    <div className="relative flex h-screen w-full flex-col items-center justify-center overflow-hidden border">
       <motion.div
         initial={{ opacity: 0.0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -23,7 +23,7 @@ export default function MainPage() {
           duration: 0.8,
           ease: "easeInOut",
         }}
-        className="absolute flex flex-col gap-4 items-center justify-center px-4 max-w-8/12"
+        className="flex flex-col gap-4 items-center justify-center px-4 max-w-8/12"
       >
         <GlowCard customSize={true} glowColor="blue" className="w-auto">
           <div className="flex flex-col items-center justify-center gap-2 md:px-4 pt-4">

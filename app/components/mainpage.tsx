@@ -15,22 +15,6 @@ export default function MainPage() {
 
   return (
     <div className="relative flex h-full w-full flex-col items-center justify-center overflow-hidden border">
-      {isMobile ? (
-        <div className="flex h-screen w-full justify-center overflow-hidden rounded-lg border bg-background p-20 md:shadow-xl">
-          <AnimatedGridPattern
-            numSquares={60}
-            maxOpacity={0.1}
-            duration={1}
-            repeatDelay={1}
-            className={cn(
-              "[mask-image:radial-gradient(500px_circle_at_center,white,transparent)]",
-              "inset-x-0 inset-y-[-50%] h-[200%] skew-y-12"
-            )}
-          />
-        </div>
-      ) : (
-        <ShaderAnimation />
-      )}
       <motion.div
         initial={{ opacity: 0.0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}

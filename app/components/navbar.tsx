@@ -92,12 +92,15 @@ export function Nav1({
 
         {/* Mobile Navigation */}
         <Sheet>
-          <SheetTrigger asChild className="md:hidden">
-            <Button variant="ghost" size="icon">
-              <Menu className="size-5" />
-              <span className="sr-only">Toggle menu</span>
-            </Button>
-          </SheetTrigger>
+          <div className="flex gap-4">
+            <AnimatedThemeToggler></AnimatedThemeToggler>
+            <SheetTrigger asChild className="md:hidden">
+              <Button variant="ghost" size="icon">
+                <Menu className="size-5" />
+                <span className="sr-only">Toggle menu</span>
+              </Button>
+            </SheetTrigger>
+          </div>
           <SheetContent side="right">
             <div className="mt-8 flex flex-col gap-4 p-4">
               {currentNavigation.map((item) => (
@@ -110,7 +113,6 @@ export function Nav1({
                 </Link>
               ))}
               <hr className="my-4" />
-              <AnimatedThemeToggler></AnimatedThemeToggler>
               <Button variant="ghost" asChild className="justify-start">
                 <Link href={currentLoginHref}>{currentLoginText}</Link>
               </Button>

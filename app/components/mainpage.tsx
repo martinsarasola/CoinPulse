@@ -45,10 +45,10 @@ export default function MainPage() {
         {isMobile ? (
           <SimpleCard customSize={true} className="w-auto">
             <div className="flex flex-col items-center justify-center gap-2 md:px-4 pt-4">
-              <div className="text-3xl md:text-5xl font-bold text-white text-center">
+              <div className="text-3xl md:text-5xl font-bold text-black dark:text-white text-center">
                 LA BRUJULA DE TUS ACTIVOS DIGITALES
               </div>
-              <div className="font-extralight text-base md:text-2xl text-white py-4 text-center">
+              <div className="font-extralight text-base md:text-2xl text-black dark:text-white py-4 text-center">
                 Mantente informado, toma mejores decisiones.
               </div>
 

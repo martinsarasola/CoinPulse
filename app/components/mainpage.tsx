@@ -37,8 +37,6 @@ export default function MainPage() {
             <Link href="/dashboard">
               <FlowButton text="Comenzar"></FlowButton>
             </Link>
-
-            <IconCloudBlock></IconCloudBlock>
           </div>
         </GlowCard>
       </motion.div>

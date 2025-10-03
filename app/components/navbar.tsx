@@ -99,7 +99,7 @@ export function Nav1({
             </Button>
           </SheetTrigger>
           <SheetContent side="right">
-            <div className="mt-8 flex flex-col gap-4">
+            <div className="mt-8 flex flex-col gap-4 p-4">
               {currentNavigation.map((item) => (
                 <Link
                   key={item.name}

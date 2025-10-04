@@ -8,6 +8,7 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import CoinPulseIcon from "@/public/coinpulseicon.png";
 import { Link003 } from "@/components/ui/css-link";
 import { AnimatedThemeToggler } from "@/components/ui/animated-theme-toggler";
+import { useMediaQuery } from "../hooks/useMediaQuery";
 
 interface Nav1Props {
   logoSrc?: string;
@@ -31,6 +32,8 @@ export function Nav1({
   getStartedHref,
   getStartedText,
 }: Nav1Props) {
+  const isMobile = useMediaQuery("(max-width: 768px)");
+
   const defaultLogoAlt = "CoinPulse Logo";
   const defaultLogoText = "CoinPulse";
   const defaultLogoLinkHref = "/";
@@ -80,7 +83,7 @@ export function Nav1({
           ))}
         </div>
 
-        <div className="hidden items-center gap-4 md:flex">
+        <div className="hidden items-center lg:gap-4 md:flex">
           <AnimatedThemeToggler></AnimatedThemeToggler>
           <Button variant="ghost" asChild>
             <Link href={currentLoginHref}>{currentLoginText}</Link>
@@ -93,7 +96,7 @@ export function Nav1({
         {/* Mobile Navigation */}
         <Sheet>
           <div className="flex gap-4">
-            <AnimatedThemeToggler></AnimatedThemeToggler>
+            {isMobile ? <AnimatedThemeToggler></AnimatedThemeToggler> : null}
             <SheetTrigger asChild className="md:hidden">
               <Button variant="ghost" size="icon">
                 <Menu className="size-5" />

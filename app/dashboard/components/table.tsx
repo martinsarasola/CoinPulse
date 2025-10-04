@@ -13,11 +13,11 @@ import {
   useReactTable,
 } from "@tanstack/react-table";
 import { ChevronDownIcon, ChevronUpIcon, ListFilterIcon } from "lucide-react";
-
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-
 import { Input } from "@/components/ui/input";
+import { BiSolidUpArrow } from "react-icons/bi";
+import { BiSolidDownArrow } from "react-icons/bi";
 
 import {
   Table,
@@ -39,6 +39,8 @@ type CryptoCoin = {
   market_cap_rank: number;
   market_cap: number;
   volumen_total: number;
+  price_change_percentage_24h: number;
+  market_cap_change_percentage_24h: number;
 };
 
 const columns: ColumnDef<CryptoCoin>[] = [
@@ -81,16 +83,64 @@ const columns: ColumnDef<CryptoCoin>[] = [
     size: 150,
   },
   {
+    // --- ¡AQUÍ ESTÁ LA NUEVA COLUMNA! ---
+    header: "Precio (24h %)",
+    accessorKey: "price_change_percentage_24h",
+    cell: ({ row }) => {
+      // Obtenemos el valor del cambio porcentual
+      const change = row.getValue("price_change_percentage_24h") as number;
+
+      // Si el dato no existe, mostramos algo neutral
+      if (change === null || change === undefined) {
+        return <span>--</span>;
+      }
+
+      const isPositive = change >= 0;
+
+      return (
+        // Usamos flex para alinear el ícono y el texto
+        <div
+          className={`flex items-center gap-1 font-semibold ${
+            isPositive ? "text-green-500" : "text-red-500"
+          }`}
+        >
+          {isPositive ? (
+            <BiSolidUpArrow className="h-4 w-4" />
+          ) : (
+            <BiSolidDownArrow className="h-4 w-4" />
+          )}
+          {/* Formateamos a 2 decimales y añadimos el símbolo % */}
+          <span>{`${change}%`}</span>
+        </div>
+      );
+    },
+    size: 150, // Ajusta el tamaño como prefieras
+  },
+  {
     header: "Capitalización de Mercado",
     accessorKey: "market_cap",
     cell: ({ row }) => {
       const amount = parseFloat(row.getValue("market_cap"));
+      const marketCapChange = row.original.market_cap_change_percentage_24h; // <-- Usamos el nuevo dato
       const formatted = new Intl.NumberFormat("en-US", {
         style: "currency",
         currency: "USD",
-        notation: "compact", // Formato compacto (e.g., $1.2T, $500B)
+        notation: "compact",
       }).format(amount);
-      return <div className="text-left">{formatted}</div>;
+
+      return (
+        <div className="flex items-center gap-2">
+          {" "}
+          {/* <-- Lo envolvemos en un flexbox */}
+          <span>{formatted}</span>
+          {marketCapChange > 0 && (
+            <BiSolidUpArrow className="h-4 w-4 text-green-500" />
+          )}
+          {marketCapChange < 0 && (
+            <BiSolidDownArrow className="h-4 w-4 text-red-500" />
+          )}
+        </div>
+      );
     },
     size: 200,
   },

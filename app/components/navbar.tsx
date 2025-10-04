@@ -4,11 +4,17 @@ import Link from "next/link";
 import Image from "next/image";
 import { Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import {
+  Sheet,
+  SheetContent,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
 import CoinPulseIcon from "@/public/coinpulseicon.png";
 import { Link003 } from "@/components/ui/css-link";
 import { AnimatedThemeToggler } from "@/components/ui/animated-theme-toggler";
 import { useMediaQuery } from "../hooks/useMediaQuery";
+import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 
 interface Nav1Props {
   logoSrc?: string;
@@ -113,6 +119,9 @@ export function Nav1({
                 </SheetTrigger>
               </div>
               <SheetContent side="right">
+                <VisuallyHidden>
+                  <SheetTitle>Menú de navegación</SheetTitle>
+                </VisuallyHidden>
                 <div className="mt-8 flex flex-col gap-4 p-4">
                   {currentNavigation.map((item) => (
                     <div key={item.name} className="text-center">

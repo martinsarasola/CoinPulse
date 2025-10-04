@@ -9,10 +9,11 @@ import { useMediaQuery } from "../hooks/useMediaQuery";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { SimpleCard } from "./spotlightcardmobile";
+import { useTheme } from "next-themes";
 
 export default function MainPage() {
   const isMobile = useMediaQuery("(max-width: 768px)");
-  console.log(isMobile);
+  const { theme } = useTheme();
 
   return (
     <div className="relative flex h-screen w-full flex-col items-center justify-center overflow-hidden border">
@@ -20,7 +21,7 @@ export default function MainPage() {
         <div className="flex h-screen w-full items-center justify-center overflow-hidden rounded-lg border bg-background p-20 md:shadow-xl">
           <AnimatedGridPattern
             numSquares={30}
-            maxOpacity={0.1}
+            maxOpacity={theme === "light" ? 0.2 : 0.1}
             duration={3}
             repeatDelay={1}
             className={cn(
@@ -43,8 +44,8 @@ export default function MainPage() {
         className="absolute flex flex-col gap-4 items-center justify-center px-4 max-w-8/12"
       >
         {isMobile ? (
-          <SimpleCard customSize={true} className="w-auto">
-            <div className="flex flex-col items-center justify-center gap-2 md:px-4 pt-4">
+          <SimpleCard customSize={true} className="auto">
+            <div className="flex flex-col items-center justify-center gap-2 pt-4">
               <div className="text-3xl md:text-5xl font-bold text-black dark:text-white text-center">
                 LA BRUJULA DE TUS ACTIVOS DIGITALES
               </div>

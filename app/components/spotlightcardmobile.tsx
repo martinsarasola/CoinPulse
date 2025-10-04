@@ -36,7 +36,7 @@ const SimpleCard: React.FC<SimpleCardProps> = ({
   const getInlineStyles = (): React.CSSProperties => {
     const styles: React.CSSProperties = {
       backgroundColor: "rgba(204, 204, 204, 0.12)", // Un color de fondo de respaldo
-      backdropFilter: "blur(10px)", // Mantenemos el efecto de desenfoque de fondo
+      backdropFilter: "blur(7px)", // Mantenemos el efecto de desenfoque de fondo
     };
 
     if (width !== undefined) {

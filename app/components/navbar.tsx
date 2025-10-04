@@ -71,7 +71,7 @@ export function Nav1({
         </a>
 
         {/* Desktop Navigation */}
-        <div className="absolute left-1/2 top-1/2 hidden -translate-x-1/2 -translate-y-1/2 items-center gap-8 md:flex">
+        <div className="absolute left-1/2 top-1/2 hidden -translate-x-14/24 -translate-y-1/2 items-center gap-8 md:flex">
           {currentNavigation.map((item) => (
             <Link003
               key={item.name}

@@ -28,6 +28,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import Image from "next/image";
+import { useMediaQuery } from "@/app/hooks/useMediaQuery";
 
 type CryptoCoin = {
   id: number;
@@ -111,6 +112,7 @@ const columns: ColumnDef<CryptoCoin>[] = [
 
 export default function TableComponent() {
   const { data, error, isLoading } = useCryptoData();
+  const isMobile = useMediaQuery("(max-width:768px)");
 
   const [sorting, setSorting] = useState<SortingState>([
     { id: "market_cap_rank", desc: false }, // Ordenar por rank por defecto
@@ -144,7 +146,7 @@ export default function TableComponent() {
           <Input
             value={globalFilter ?? ""}
             onChange={(e) => setGlobalFilter(e.target.value)}
-            placeholder="Buscar por nombre o símbolo..."
+            placeholder="Buscar por nombre..."
             className="pl-8"
           />
           <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center justify-center pl-2">
@@ -165,7 +167,9 @@ export default function TableComponent() {
                     style={{ width: `${header.getSize()}px` }}
                   >
                     <div
-                      className="flex cursor-pointer select-none items-center gap-2"
+                      className={`flex cursor-pointer select-none items-center gap-2 ${
+                        isMobile ? "py-3" : ""
+                      }`}
                       onClick={header.column.getToggleSortingHandler()}
                     >
                       {flexRender(

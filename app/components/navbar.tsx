@@ -57,8 +57,8 @@ export function Nav1({
   const currentGetStartedText = getStartedText ?? defaultGetStartedText;
 
   return (
-    <header className="border-b bg-background">
-      <nav className="container mx-auto flex h-16 items-center justify-between px-4">
+    <header className="border-b bg-background w-full flex justify-center">
+      <nav className="relative flex h-16 w-full items-center justify-between px-4">
         <a href={currentLogoLinkHref} className="flex items-center gap-2">
           <Image
             src={CoinPulseIcon}
@@ -71,7 +71,7 @@ export function Nav1({
         </a>
 
         {/* Desktop Navigation */}
-        <div className="hidden items-center gap-8 md:flex">
+        <div className="absolute left-1/2 top-1/2 hidden -translate-x-1/2 -translate-y-1/2 items-center gap-8 md:flex">
           {currentNavigation.map((item) => (
             <Link003
               key={item.name}
@@ -94,40 +94,42 @@ export function Nav1({
         </div>
 
         {/* Mobile Navigation */}
-        <Sheet>
-          <div className="flex gap-4">
-            {isMobile ? <AnimatedThemeToggler></AnimatedThemeToggler> : null}
-            <SheetTrigger asChild className="md:hidden">
-              <Button variant="ghost" size="icon">
-                <Menu className="size-5" />
-                <span className="sr-only">Toggle menu</span>
-              </Button>
-            </SheetTrigger>
-          </div>
-          <SheetContent side="right">
-            <div className="mt-8 flex flex-col gap-4 p-4">
-              {currentNavigation.map((item) => (
-                <div key={item.name} className="text-center">
-                  <Link
-                    href={item.href}
-                    className="text-sm transition-colors hover:text-foreground"
-                  >
-                    {item.name}
-                  </Link>
-                </div>
-              ))}
-              <hr className="my-4" />
-              <Button variant="ghost" asChild className="justify-start">
-                <Link href={currentLoginHref}>{currentLoginText}</Link>
-              </Button>
-              <Button asChild>
-                <Link href={currentGetStartedHref}>
-                  {currentGetStartedText}
-                </Link>
-              </Button>
+        {isMobile ? (
+          <Sheet>
+            <div className="flex gap-4">
+              <AnimatedThemeToggler></AnimatedThemeToggler>
+              <SheetTrigger asChild className="md:hidden">
+                <Button variant="ghost" size="icon">
+                  <Menu className="size-5" />
+                  <span className="sr-only">Toggle menu</span>
+                </Button>
+              </SheetTrigger>
             </div>
-          </SheetContent>
-        </Sheet>
+            <SheetContent side="right">
+              <div className="mt-8 flex flex-col gap-4 p-4">
+                {currentNavigation.map((item) => (
+                  <div key={item.name} className="text-center">
+                    <Link
+                      href={item.href}
+                      className="text-sm transition-colors hover:text-foreground"
+                    >
+                      {item.name}
+                    </Link>
+                  </div>
+                ))}
+                <hr className="my-4" />
+                <Button variant="ghost" asChild className="justify-start">
+                  <Link href={currentLoginHref}>{currentLoginText}</Link>
+                </Button>
+                <Button asChild>
+                  <Link href={currentGetStartedHref}>
+                    {currentGetStartedText}
+                  </Link>
+                </Button>
+              </div>
+            </SheetContent>
+          </Sheet>
+        ) : null}
       </nav>
     </header>
   );

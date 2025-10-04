@@ -104,13 +104,14 @@ export function Nav1({
           <SheetContent side="right">
             <div className="mt-8 flex flex-col gap-4 p-4">
               {currentNavigation.map((item) => (
-                <Link
-                  key={item.name}
-                  href={item.href}
-                  className="text-sm text-muted-foreground transition-colors hover:text-foreground"
-                >
-                  {item.name}
-                </Link>
+                <div key={item.name} className="text-center">
+                  <Link
+                    href={item.href}
+                    className="text-sm transition-colors hover:text-foreground"
+                  >
+                    {item.name}
+                  </Link>
+                </div>
               ))}
               <hr className="my-4" />
               <Button variant="ghost" asChild className="justify-start">
